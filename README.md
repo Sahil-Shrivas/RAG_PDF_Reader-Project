@@ -8,7 +8,7 @@ This project combines the capabilities of **Large Language Models (LLMs)** with 
 
 # 🔗 GitHub Repository
 
-:contentReference[oaicite:0]{index=0}
+https://github.com/Sahil-Shrivas/RAG_PDF_Reader-Project.git
 
 ---
 
@@ -441,7 +441,7 @@ If you found this project useful:
 # 📬 Contact
 
 📧 GitHub Profile:  
-:contentReference[oaicite:1]{index=1}
+https://github.com/Sahil-Shrivas
 
 ---
 
