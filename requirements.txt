@@ -1,6 +1,6 @@
-langchain
-langchain-core
-langchain-community
+langchain==0.2.5
+langchain-core==0.2.9
+langchain-community==0.2.5
 
 # LLM Providers
 langchain-openai
@@ -10,7 +10,7 @@ mistralai
 
 # Vector Database
 chromadb==0.5.3
-langchain-chroma
+langchain-chroma==0.1.2
 
 # Embedding Models
 sentence-transformers
@@ -31,11 +31,11 @@ python-dotenv
 pandas
 numpy
 
-# API / App Layer (optional but common in RAG apps)
+# API / App Layer
 fastapi
 uvicorn
 
-# UI (optional)
+# UI
 streamlit
 
 # Utilities
