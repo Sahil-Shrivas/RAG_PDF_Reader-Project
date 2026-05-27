@@ -139,66 +139,66 @@
 
 
 
-# import streamlit as st
-# from dotenv import load_dotenv
-# import tempfile
-# import os
+import streamlit as st
+from dotenv import load_dotenv
+import tempfile
+import os
 
-# from langchain_community.document_loaders import PyPDFLoader
-# from langchain_text_splitters import RecursiveCharacterTextSplitter
-# from langchain_community.embeddings import HuggingFaceEmbeddings
-# # from langchain_community.vectorstores import Chroma
-# from langchain_chroma import Chroma
-# from langchain_mistralai import ChatMistralAI
-# from langchain_core.prompts import ChatPromptTemplate
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.embeddings import HuggingFaceEmbeddings
+# from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
+from langchain_mistralai import ChatMistralAI
+from langchain_core.prompts import ChatPromptTemplate
 
-# load_dotenv()
+load_dotenv()
 
-# st.set_page_config(page_title="RAG Book Assistant")
+st.set_page_config(page_title="RAG Book Assistant")
 
-# st.title("📚 RAG Book Assistant")
-# st.write("Upload a PDF and ask questions from the document")
+st.title("📚 RAG Book Assistant")
+st.write("Upload a PDF and ask questions from the document")
 
-# uploaded_file = st.file_uploader("Upload a PDF book", type="pdf")
+uploaded_file = st.file_uploader("Upload a PDF book", type="pdf")
 
-# # ------------------ CREATE VECTOR DB ------------------
+# ------------------ CREATE VECTOR DB ------------------
 
-# if uploaded_file:
+if uploaded_file:
 
-#     with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
-#         tmp_file.write(uploaded_file.read())
-#         file_path = tmp_file.name
+    with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
+        tmp_file.write(uploaded_file.read())
+        file_path = tmp_file.name
 
-#     st.success("PDF uploaded successfully!")
+    st.success("PDF uploaded successfully!")
 
-#     if st.button("Create Vector Database"):
+    if st.button("Create Vector Database"):
 
-#         with st.spinner("Processing document..."):
+        with st.spinner("Processing document..."):
 
-#             loader = PyPDFLoader(file_path)
-#             docs = loader.load()
+            loader = PyPDFLoader(file_path)
+            docs = loader.load()
 
-#             splitter = RecursiveCharacterTextSplitter(
-#                 chunk_size=1000,
-#                 chunk_overlap=200
-#             )
+            splitter = RecursiveCharacterTextSplitter(
+                chunk_size=1000,
+                chunk_overlap=200
+            )
 
-#             chunks = splitter.split_documents(docs)
+            chunks = splitter.split_documents(docs)
 
-#             # ✅ FIX: FREE embeddings
-#             embeddings = HuggingFaceEmbeddings(
-#                 model_name="all-MiniLM-L6-v2"
-#             )
+            # ✅ FIX: FREE embeddings
+            embeddings = HuggingFaceEmbeddings(
+                model_name="all-MiniLM-L6-v2"
+            )
 
-#             vectorstore = Chroma.from_documents(
-#                 documents=chunks,
-#                 embedding=embeddings,
-#                 persist_directory="chroma_db"
-#             )
+            vectorstore = Chroma.from_documents(
+                documents=chunks,
+                embedding=embeddings,
+                persist_directory="chroma_db"
+            )
 
-#             vectorstore.persist()
+            vectorstore.persist()
 
-#         st.success("Vector database created!")
+        st.success("Vector database created!")
 
 # # ------------------ LOAD + QA ------------------
 
